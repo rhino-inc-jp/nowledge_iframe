@@ -8,6 +8,7 @@ export function isAllowed(request: NextRequest) {
 
   // microCMSからのアクセスを許可
   const referer = request.headers.get("referer") || "";
+
   const isMicroCMS =
     referer.includes("microcms.io") || referer.includes("microcms.app");
 
