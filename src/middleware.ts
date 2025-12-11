@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function isAllowed(request: NextRequest) {
   // ローカルからのアクセスを許可
   const { hostname } = request.nextUrl;
   const isLocal = hostname.includes("localhost");
@@ -11,7 +11,11 @@ export function middleware(request: NextRequest) {
   const isMicroCMS =
     referer.includes("microcms.io") || referer.includes("microcms.app");
 
-  if (!(isLocal || isMicroCMS)) {
+  return isLocal || isMicroCMS;
+}
+
+export function middleware(request: NextRequest) {
+  if (!isAllowed(request)) {
     return new NextResponse("Forbidden", { status: 403 });
   }
 
