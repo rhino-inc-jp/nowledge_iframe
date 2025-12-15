@@ -15,7 +15,7 @@ export function isAllowed(request: NextRequest) {
   return isLocal || isMicroCMS;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (!isAllowed(request)) {
     return new NextResponse("Forbidden", { status: 403 });
   }
