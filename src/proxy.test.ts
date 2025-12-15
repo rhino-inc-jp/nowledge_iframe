@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { isAllowed } from "./middleware";
+import { isAllowed } from "./proxy";
 import { NextRequest } from "next/server";
 
-describe("middlewareのアクセス制御", () => {
+describe("proxyのアクセス制御", () => {
   it("ローカル環境（localhost）を許可", () => {
     const request = new NextRequest(
       "http://localhost:3000/custom-field/button"
