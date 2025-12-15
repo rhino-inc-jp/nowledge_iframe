@@ -7,13 +7,16 @@ export default function MicroCMSField() {
   const [result, setResult] = useState(null);
 
   async function extract() {
-    const response = await fetch("/api/extract-meta", {
-      method: "POST",
-      body: JSON.stringify({ url }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://nowledge.rhino-inc.jp/api/extract-meta",
+      {
+        method: "POST",
+        body: JSON.stringify({ url }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const data = await response.json();
     setResult(data);
