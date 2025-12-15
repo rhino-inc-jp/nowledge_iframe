@@ -39,7 +39,11 @@ export default function MicroCMSField() {
         </button>
       </div>
 
-      {result && <div>{JSON.stringify(result, null, 2)}</div>}
+      {result && (
+        <div className="border border-slate-500">
+          {JSON.stringify(result, null, 2)}
+        </div>
+      )}
     </div>
   );
 }
